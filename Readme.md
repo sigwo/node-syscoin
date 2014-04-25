@@ -20,7 +20,7 @@ var client = new syscoin.Client({
   port: 8368,
   user: 'username',
   pass: 'password',
-  timeout: 90000
+  timeout: 180000
 });
 ```
 
