@@ -17,10 +17,10 @@ object, or you may call the API directly using the `cmd` method.
 // all config options are optional
 var client = new syscoin.Client({
   host: 'localhost',
-  port: 8332,
+  port: 8368,
   user: 'username',
   pass: 'password',
-  timeout: 30000
+  timeout: 90000
 });
 ```
 
@@ -35,7 +35,7 @@ client.offerNew('category/subcategory', 'offer title', 1, 100, 'offer descriptio
 ### Create a new offer directly using `cmd`
 
 ```js
-client.cmd('offerNew', category/subcategory', 'offer title', 1, 100, 'offer description', function(err, result, resHeaders) {
+client.cmd('offerNew', 'category/subcategory', 'offer title', 1, 100, 'offer description', function(err, result, resHeaders) {
   if (err) return console.log(err);
   console.log('Offer key:', result[1]);
 });
