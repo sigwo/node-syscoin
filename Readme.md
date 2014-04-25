@@ -1,4 +1,4 @@
-# node-syscoin [![Build Status](https://travis-ci.org/syscoin/node-syscoin.svg)](https://travis-ci.org/syscoin/node-syscoin)
+# node-syscoin 
 
 node-syscoin is a simple wrapper for the Syscoin client's JSON-RPC API.
 
