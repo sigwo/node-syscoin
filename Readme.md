@@ -35,7 +35,7 @@ client.offerNew('category/subcategory', 'offer title', 1, 100, 'offer descriptio
 ### Create a new offer directly using `cmd`
 
 ```js
-client.cmd('offerNew', 'category/subcategory', 'offer title', 1, 100, 'offer description', function(err, result, resHeaders) {
+client.cmd('offernew', 'category/subcategory', 'offer title', 1, 100, 'offer description', function(err, result, resHeaders) {
   if (err) return console.log(err);
   console.log('Offer key:', result[1]);
 });
