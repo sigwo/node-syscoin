@@ -1,43 +1,64 @@
-# node-syscoin 
+# node-bitcoin
+[![travis][travis-image]][travis-url]
+[![npm][npm-image]][npm-url]
+[![downloads][downloads-image]][downloads-url]
+[![js-standard-style][standard-image]][standard-url]
 
-node-syscoin is a simple wrapper for the Syscoin client's JSON-RPC API.
+[travis-image]: https://travis-ci.org/freewil/node-bitcoin.svg?branch=master
+[travis-url]: https://travis-ci.org/freewil/node-bitcoin
 
-The API is equivalent to the API document [here](https://en.bitcoin.it/wiki/Original_Syscoin_client/API_Calls_list).
-The methods are exposed as lower camelcase methods on the `syscoin.Client`
+[npm-image]: https://img.shields.io/npm/v/bitcoin.svg?style=flat
+[npm-url]: https://npmjs.org/package/bitcoin
+
+[downloads-image]: https://img.shields.io/npm/dm/bitcoin.svg?style=flat
+[downloads-url]: https://npmjs.org/package/bitcoin
+
+[standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat
+[standard-url]: http://standardjs.com
+
+node-bitcoin is a simple wrapper for the Bitcoin client's JSON-RPC API.
+
+If starting a new project, I highly encourage you to take a look at the more modern [bitcoin-core](https://github.com/seegno/bitcoin-core), which features:
+* ES6 support
+* optional promise support
+* support for newer REST API, in addition to RPC methods
+
+The API is equivalent to the API document [here](https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list).
+The methods are exposed as lower camelcase methods on the `bitcoin.Client`
 object, or you may call the API directly using the `cmd` method.
 
 ## Install
 
-`npm install syscoin`
+`npm install bitcoin`
 
 ## Examples
 
 ### Create client
 ```js
 // all config options are optional
-var client = new syscoin.Client({
+var client = new bitcoin.Client({
   host: 'localhost',
-  port: 8368,
+  port: 8332,
   user: 'username',
   pass: 'password',
-  timeout: 180000
+  timeout: 30000
 });
 ```
 
-### Create a new offer
+### Get balance across all accounts with minimum confirmations of 6
 
 ```js
-client.offerNew('category/subcategory', 'offer title', 1, 100, 'offer description', function(err, result, resHeaders) {
+client.getBalance('*', 6, function(err, balance, resHeaders) {
   if (err) return console.log(err);
-  console.log('Offer key:', result[1]);
+  console.log('Balance:', balance);
 });
 ```
-### Create a new offer directly using `cmd`
+### Getting the balance directly using `cmd`
 
 ```js
-client.cmd('offernew', 'category/subcategory', 'offer title', 1, 100, 'offer description', function(err, result, resHeaders) {
+client.cmd('getbalance', '*', 6, function(err, balance, resHeaders){
   if (err) return console.log(err);
-  console.log('Offer key:', result[1]);
+  console.log('Balance:', balance);
 });
 ```
 
@@ -58,20 +79,20 @@ client.cmd(batch, function(err, address, resHeaders) {
 ```
 
 ## SSL
-See [Enabling SSL on original bitcoin client](https://en.bitcoin.it/wiki/Enabling_SSL_on_original_client_daemon).
+See [Enabling SSL on original client](https://en.bitcoin.it/wiki/Enabling_SSL_on_original_client_daemon).
 
-If you're using this to connect to syscoind across a network it is highly
+If you're using this to connect to bitcoind across a network it is highly
 recommended to enable `ssl`, otherwise an attacker may intercept your RPC credentials
-resulting in theft of your syscoins.
+resulting in theft of your bitcoins.
 
 When enabling `ssl` by setting the configuration option to `true`, the `sslStrict`
 option (verifies the server certificate) will also be enabled by default. It is
-highly recommended to specify the `sslCa` as well, even if your syscoind has
+highly recommended to specify the `sslCa` as well, even if your bitcoind has
 a certificate signed by an actual CA, to ensure you are connecting
-to your own syscoind.
+to your own bitcoind.
 
 ```js
-var client = new syscoin.Client({
+var client = new bitcoin.Client({
   host: 'localhost',
   port: 8332,
   user: 'username',

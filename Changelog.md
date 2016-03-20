@@ -1,5 +1,55 @@
 # node-bitcoin changelog
 
+## v3.0.1 (2015/10/25)
+* fix redefinition of already defined variable (does not actually affect behavior)
+
+## v3.0.0 (2015/10/18)
+* make public domain license explicit
+* remove commands dropped in bitcoind v0.11
+  * `getHashesPerSecond`
+  * `getHashesPerSec`
+* add missing commands for bitcoind v0.11
+  * `generate`
+  * `verifyTxOutProof`
+
+## v2.4.0 (2015/07/16)
+* don't lazy-load http/https modules
+* add command for bitcoind v0.11.0: `getTxOutProof`
+
+## v2.3.2 (2015/06/26)
+* fix bug in test suite that was supposed to detect missing commands
+* add missing commands
+  * `prioritiseTransaction`
+  * `importWallet`
+
+## v2.3.1 (2015/06/24)
+* add missing `getMempoolInfo` for bitcoind v0.10
+
+## v2.3.0 (2015/02/04)
+* drop node v0.8.x support
+* update testnet-box
+* update devDependencies
+* add commands for bitcoind v0.10
+  * `estimateFee`
+  * `estimatePriority`
+  * `getChainTips`
+  * `importAddress`
+
+## v2.2.0 (2014/08/29)
+* add commands for bitcoind v0.9.x
+  * `decodeScript`
+  * `dumpWallet`
+  * `getBestBlockHash`
+  * `getBlockchainInfo`
+  * `getNetTotals`
+  * `getNetworkInfo`
+  * `getNetworkHashPs`
+  * `getRawChangeAddress`
+  * `getUnconfirmedBalance`
+  * `getWalletInfo`
+  * `ping`
+  * `verifyChain`
+
 ## v2.1.2 (2014/04/16)
 * lazy load `http`/`https` module
 
