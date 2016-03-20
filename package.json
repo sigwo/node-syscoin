@@ -1,15 +1,16 @@
 {
-  "name": "bitcoin",
-  "description": "Communicate with bitcoind via JSON-RPC",
-  "version": "3.0.1",
+  "name": "syscoin",
+  "description": "Communicate with syscoind via JSON-RPC",
+  "version": "3.0.11",
   "main": "lib/index.js",
   "keywords": [
-    "bitcoin",
+    "syscoin",
     "rpc"
   ],
   "author": "Bill Casarin <bill@casarin.ca> (jb55.com)",
   "contributors": [
-    "Sean Lavine <sean@eternalrise.com>"
+    "Sean Lavine <sean@eternalrise.com>",
+    "Dan Wasyluk <dan@syscoin.org>"
   ],
   "dependencies": {},
   "devDependencies": {
@@ -20,7 +21,7 @@
   "optionalDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git://github.com/freewil/node-bitcoin.git"
+    "url": "git://github.com/syscoin/node-syscoin.git"
   },
   "engines": {
     "node": ">= 0.10.0"
@@ -30,9 +31,9 @@
     "test": "make test"
   },
   "bugs": {
-    "url": "https://github.com/freewil/node-bitcoin/issues"
+    "url": "https://github.com/syscoin/node-syscoin/issues"
   },
-  "homepage": "https://github.com/freewil/node-bitcoin#readme",
+  "homepage": "https://github.com/syscoin/node-syscoin#readme",
   "directories": {
     "test": "test"
   },
