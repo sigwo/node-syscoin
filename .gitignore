@@ -1,3 +1,7 @@
+node_modules/
+test/config.js
 .idea
+lib/lib.iml
+.project
+
 node-syscoin.iml
-test
