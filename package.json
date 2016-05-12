@@ -1,17 +1,19 @@
 {
   "name": "syscoin",
-  "description": "Communicate with syscoind via JSON-RPC",
-  "version": "3.0.11",
+  "description": "Communicate with syscoin-cli via JSON-RPC",
+  "version": "2.2",
   "main": "lib/index.js",
   "keywords": [
     "syscoin",
+    "decentralized",
+    "marketplace",
+    "blockchain",
+    "bitcoin",
+    "messaging",
+    "encryption",
     "rpc"
   ],
-  "author": "Bill Casarin <bill@casarin.ca> (jb55.com)",
-  "contributors": [
-    "Sean Lavine <sean@eternalrise.com>",
-    "Dan Wasyluk <dan@syscoin.org>"
-  ],
+  "author": "Dan Wasyluk <dan@syscoin.org>",
   "dependencies": {},
   "devDependencies": {
     "clone": "^1.0.2",
