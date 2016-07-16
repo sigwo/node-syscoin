@@ -1,8 +1,24 @@
-# node-syscoin 
+# node-syscoin
+[![travis][travis-image]][travis-url]
+[![npm][npm-image]][npm-url]
+[![downloads][downloads-image]][downloads-url]
+[![js-standard-style][standard-image]][standard-url]
+
+[travis-image]: https://travis-ci.org/syscoin/node-syscoin.svg?branch=syscoin2
+[travis-url]: https://travis-ci.org/syscoin/node-syscoin
+
+[npm-image]: https://img.shields.io/npm/v/syscoin.svg?style=flat
+[npm-url]: https://npmjs.org/package/syscoin
+
+[downloads-image]: https://img.shields.io/npm/dm/syscoin.svg?style=flat
+[downloads-url]: https://npmjs.org/package/syscoin
+
+[standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat
+[standard-url]: http://standardjs.com
 
 node-syscoin is a simple wrapper for the Syscoin client's JSON-RPC API.
 
-The API is equivalent to the API document [here](https://en.bitcoin.it/wiki/Original_Syscoin_client/API_Calls_list).
+The API is equivalent to the API document [here](https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_Calls_list).
 The methods are exposed as lower camelcase methods on the `syscoin.Client`
 object, or you may call the API directly using the `cmd` method.
 
@@ -17,27 +33,27 @@ object, or you may call the API directly using the `cmd` method.
 // all config options are optional
 var client = new syscoin.Client({
   host: 'localhost',
-  port: 8368,
+  port: 8332,
   user: 'username',
   pass: 'password',
-  timeout: 180000
+  timeout: 30000
 });
 ```
 
-### Create a new offer
+### Get balance across all accounts with minimum confirmations of 6
 
 ```js
-client.offerNew('category/subcategory', 'offer title', 1, 100, 'offer description', function(err, result, resHeaders) {
+client.getBalance('*', 6, function(err, balance, resHeaders) {
   if (err) return console.log(err);
-  console.log('Offer key:', result[1]);
+  console.log('Balance:', balance);
 });
 ```
-### Create a new offer directly using `cmd`
+### Getting the balance directly using `cmd`
 
 ```js
-client.cmd('offernew', 'category/subcategory', 'offer title', 1, 100, 'offer description', function(err, result, resHeaders) {
+client.cmd('getbalance', '*', 6, function(err, balance, resHeaders){
   if (err) return console.log(err);
-  console.log('Offer key:', result[1]);
+  console.log('Balance:', balance);
 });
 ```
 
@@ -58,7 +74,7 @@ client.cmd(batch, function(err, address, resHeaders) {
 ```
 
 ## SSL
-See [Enabling SSL on original bitcoin client](https://en.bitcoin.it/wiki/Enabling_SSL_on_original_client_daemon).
+See [Enabling SSL on original client](https://en.bitcoin.it/wiki/Enabling_SSL_on_original_client_daemon).
 
 If you're using this to connect to syscoind across a network it is highly
 recommended to enable `ssl`, otherwise an attacker may intercept your RPC credentials
